@@ -1,0 +1,54 @@
+<% layout("../layouts/layout.eta") %>
+
+<h1><%=it.question.title%><h1>
+<h2><%=it.question.question_text%><h2>
+<h2>Answer options</h2>
+
+<% if (it.options && it.options.length > 0) { %>
+
+<ul>
+<% it.options.forEach(option => { %>
+  <li><%= option.option_text%>: <%= option.is_correct ? ": correct" : "not correct" %> 
+  <form style="display:inline;" method="POST" action="/questions/<%=it.question.id%>/options/<%=option.id%>/delete">
+    <fieldset>
+    <div class="form-group">
+      <input class="form-control" type="submit" value="delete option"/>
+    </div>
+  </fieldset>
+</form>
+</li>
+<% }); %>
+</ul>
+
+<% } else { %>
+
+<form method="POST" action="/questions/<%=it.question.id%>/delete">
+  <fieldset>
+    <div class="form-group">
+        <input class="form-control" type="submit" value="delete question"/>
+    </div>
+  </fieldset>
+</form>
+<% }%>
+
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+<form method="POST" action="/questions/<%=it.question.id%>/options">
+  <fieldset>
+    <div class="form-group">
+<label for="option_text">Option text:</label>
+<textarea class="form-control" name="option_text" id="option_text" value="<%= it.option_text ? it.option_text : '' %>"></textarea><br/>
+<label class="form-check-label" for="is_correct">Correct answer:</label>
+<%if (it.options.every(option=>!option.is_correct)){%><input class="form-check" type="checkbox" name="is_correct" id="is_correct" <% if(it.is_correct=="on") {%> checked <%} %> /><br/>
+<%} else {%> <p>You can still add incorrect answer options. If you want to add another correct answer, please delete the previous.</p> <%}%>
+<input class="form-control" type="submit" value="Add answer option"/>
+    </div>
+  </fieldset>
+</form>

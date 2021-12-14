@@ -1,0 +1,4 @@
+<% layout("../layouts/layout.eta") %>
+<h1><span class="label label-danger">Incorrect!</span><h1>
+<p>The correct option was <b><%=it.correct%></b><p>
+<a href="/quiz">Next question</a>
