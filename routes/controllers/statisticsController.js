@@ -9,7 +9,6 @@ const showStats = async ({ render, user }) => {
   const noOfQuestionAnswers =
     (await statisticsService.answersToUsers(user.id)).count;
   const topFive = await statisticsService.getFiveMostAnswers();
-  console.log(topFive);
   render("statistics/statistics", {
     noOfAnswers,
     noOfCorrectAnswers,

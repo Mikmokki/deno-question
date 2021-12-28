@@ -1,7 +1,8 @@
 <% layout("./layouts/layout.eta") %>
-
-<h1>Question application</h1>
+<body style="background-size:auto;background-position:center; background-image: url(../static/bg.jpg); background-repeat: space; color:white;">
+<h1>Quiz Hero</h1>
 <h2>Here you can take part in a quiz and add questions for you and others to answer.<h2>
 <a href="/questions">See questions (requires login)</a><br/>
 <a href="/auth/login">Login</a><br/>
 <a href="/auth/register">Register</a><br/>
+</body>

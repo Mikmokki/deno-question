@@ -5,11 +5,8 @@ const registrationValidationRules = {
   password: [validasaur.required, validasaur.minLength(4)],
 };
 const getRegistrationData = async (request) => {
-  console.log(request);
   const body = request.body({ type: "form" });
-  console.log(body);
   const params = await body.value;
-  console.log(params);
   return {
     email: params.get("email"),
     password: params.get("password"),
@@ -26,7 +23,6 @@ const registerUser = async ({ request, response, render }) => {
     console.log(errors);
     render("auth/registration.eta", registrationData);
   } else {
-    console.log("wuhuu");
     await userService.addUser(
       registrationData.email,
       await bcrypt.hash(registrationData.password),
@@ -70,4 +66,15 @@ const processLogin = async ({ request, response, render, state }) => {
   response.redirect("/questions");
 };
 
-export { processLogin, registerUser, showLoginForm, showRegistrationForm };
+const logOut = async ({ response, state }) => {
+  await state.session.set("user", null);
+  response.redirect("/");
+};
+
+export {
+  logOut,
+  processLogin,
+  registerUser,
+  showLoginForm,
+  showRegistrationForm,
+};

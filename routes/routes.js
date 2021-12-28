@@ -23,6 +23,7 @@ router.get("/auth/register", userController.showRegistrationForm);
 router.post("/auth/register", userController.registerUser);
 router.get("/auth/login", userController.showLoginForm);
 router.post("/auth/login", userController.processLogin);
+router.get("/auth/logout", userController.logOut);
 
 router.get("/quiz", quizController.generateQuiz);
 router.get("/quiz/:id", quizController.showQuiz);

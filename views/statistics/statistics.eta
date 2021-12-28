@@ -1,13 +1,15 @@
 <% layout("../layouts/layout.eta") %>
-<h1>Statistics!<h1>
+<h1>Statistics<h1>
 <ul>
 <li>Total number of your answers: <%=it.noOfAnswers%></li>
 <li>Total number of your correct answers: <%=it.noOfCorrectAnswers%> (<%=(100*Number(it.noOfCorrectAnswers)/(Number(it.noOfAnswers)||1)).toFixed(1)%>)%</li>
 <li>Total number of your created questions: <%=it.noOfCreated%></li>
 <li>Total number of answers to your questions: <%=it.noOfQuestionAnswers%></li>
 </ul>
+<div>Five users with the most answered questions:
 <ol>
 <%it.topFive && it.topFive.forEach(user=>{%>
 <li><%=user.email%>: <%=user.count%></li>
 <%});%>
 </ol>
+</div>

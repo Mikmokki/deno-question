@@ -31,8 +31,8 @@
   <fieldset>
     <div class="form-group">
 <label for="title">Title:</label>
-<input class="form-control" type="text" name="title" id="title"/><br/>
+<input class="form-control" type="text" name="title" id="title" value="<%= it.title || '' %>"/><br/>
 <label for="question_text">Question text:</label>
-<textarea class="form-control" name="question_text" id="question_text" value="<%= it.question_text ? it.question_text : '' %>"></textarea><br/>
+<textarea class="form-control" name="question_text" id="question_text"><%= it.question_text || ''%></textarea><br/>
 <input class="form-control" type="submit" value="Add new question"/>
 </form>

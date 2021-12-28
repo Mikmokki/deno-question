@@ -34,6 +34,12 @@ const addAnswer = async ({ response, params, user }) => {
     );
     response.redirect(`/quiz/${params.id}/correct`);
   } else {
+    await questionService.addAnswer(
+      user.id,
+      params.id,
+      params.optionId,
+      false,
+    );
     response.redirect(`/quiz/${params.id}/incorrect`);
   }
 };

@@ -33,6 +33,7 @@ const addQuestion = async ({ request, response, render, user }) => {
     console.log(errors);
     questionData.validationErrors = errors;
     questionData.questions = await questionService.listQuestionsByUser(user.id);
+    console.log(questionData)
     render("questions/questions.eta", questionData);
   } else {
     await questionService.addQuestion(

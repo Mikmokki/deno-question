@@ -46,8 +46,10 @@
 <label for="option_text">Option text:</label>
 <textarea class="form-control" name="option_text" id="option_text" value="<%= it.option_text ? it.option_text : '' %>"></textarea><br/>
 <label class="form-check-label" for="is_correct">Correct answer:</label>
-<%if (it.options.every(option=>!option.is_correct)){%><input class="form-check" type="checkbox" name="is_correct" id="is_correct" <% if(it.is_correct=="on") {%> checked <%} %> /><br/>
-<%} else {%> <p>You can still add incorrect answer options. If you want to add another correct answer, please delete the previous.</p> <%}%>
+<%if (it.options.every(option=>!option.is_correct)){%>
+<input class="form-check" type="checkbox" name="is_correct" id="is_correct" <% if(it.is_correct=="on") {%> checked <%} %> /><br/>
+<%} else {%> 
+<p>You can still add incorrect answer options. If you want to add another correct answer, please delete the previous.</p> <%}%>
 <input class="form-control" type="submit" value="Add answer option"/>
     </div>
   </fieldset>

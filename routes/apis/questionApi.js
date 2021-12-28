@@ -19,7 +19,6 @@ const getRandomQuestion = async ({ response }) => {
 };
 const postAnswer = async ({ request, response }) => {
   const body = request.body({ type: "json" });
-  console.log(body);
   const answer = await body.value;
   const option = await questionService.getOptionById(answer.optionId);
   option && option.is_correct
