@@ -33,7 +33,7 @@ const addQuestion = async ({ request, response, render, user }) => {
     console.log(errors);
     questionData.validationErrors = errors;
     questionData.questions = await questionService.listQuestionsByUser(user.id);
-    console.log(questionData)
+    console.log(questionData);
     render("questions/questions.eta", questionData);
   } else {
     await questionService.addQuestion(
@@ -78,7 +78,7 @@ const addOption = async ({ request, response, render, params, user }) => {
     await questionService.addOption(
       params.id,
       optionData.option_text,
-      optionData.is_correct,
+      optionData.is_correct || false,
     );
     response.redirect(`/questions/${params.id}`);
   }
