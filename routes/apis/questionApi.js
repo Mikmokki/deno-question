@@ -15,7 +15,7 @@ const getRandomQuestion = async ({ response }) => {
         optionText: o.option_text,
       })),
     };
-  } else response.body = "";
+  } else response.body = {};
 };
 const postAnswer = async ({ request, response }) => {
   const body = request.body({ type: "json" });

@@ -9,13 +9,7 @@ const CONCURRENT_CONNECTIONS = 2;
 //   password: "password",
 //   port: 5432,
 // }, CONCURRENT_CONNECTIONS);
-const connectionPool = new Pool({
-  hostname: "abul.db.elephantsql.com",
-  database: "duhhzqst",
-  user: "duhhzqst",
-  password: "eYlBIBZjNwbg2clGASdCK3kOpNz-r_s6",
-  port: 5432,
-}, CONCURRENT_CONNECTIONS);
+const connectionPool = new Pool({}, CONCURRENT_CONNECTIONS);
 
 const executeQuery = async (query, ...args) => {
   const response = {};
